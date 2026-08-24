@@ -30,10 +30,12 @@ public class AccountServiceImp implements AccountService {
     @Override
     public AccountResponse createAccount(CreateAccountRequest request) {
 
+        System.out.println("request: " + request.toString());
         Account account = new Account();
+        account.setCustomerId(request.getCustomerId());
         account.setAccountNumber(generateAccountNumber());
         account.setAccountType(request.getAccountType());
-        account.setBalance(BigDecimal.ONE);
+        account.setBalance(BigDecimal.ZERO);
         account.setStatus(AccountStatus.ACTIVE);
 
         return mapToResponse(accountRepository.save(account));
