@@ -36,6 +36,7 @@ public class AccountController {
 
     @GetMapping("/number/{accountNumber}")
     public AccountResponse getByAccountNumber(@PathVariable String accountNumber) throws AccountNotFoundException {
+        System.out.println("accountNumber: " + accountNumber);
         return accountService.getByAccountNumber(accountNumber);
     }
 
